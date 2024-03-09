@@ -98,7 +98,7 @@ keys = [
         #    lazy.layout.shuffle_down(), 
         #    desc="Move window down"
         #)     
-    ])
+    ], name="Chord")
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -166,9 +166,10 @@ screens = [
                 ),
                 widget.WindowTabs(),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Wlan(), # Show status of `wlan0` interface
+                widget.Wlan(interface="wlan0"), # Show status of `wlan0` interface
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Battery(battery="BAT0"), # Display battery information for BAT0
                 widget.QuickExit() 
                 ], 
             24
