@@ -1,5 +1,5 @@
 xterm*background: black
 xterm*foreground: white
-xterm*faceName: Monospace
-xterm*faceSize: 18
+xterm*faceName: AnonymiceProNerdFontMono-Regular 
+xterm*faceSize: 16
 

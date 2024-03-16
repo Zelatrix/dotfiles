@@ -8,12 +8,6 @@ alias l='ls -CF'
 alias pip='pip3'
 alias python='python3'
 
-# Programs
-alias c='clear'
-alias cls='clear'
-alias df='df -h | grep -v '/dev/loop' | grep -v '/var/lib''
-alias vi='vim'
-
 # List running Docker containers
 running() {
    echo "Running containers:"; docker ps | awk '{if (NR!=1) print $2, $NF}' | column -t
@@ -35,6 +29,12 @@ dfs() {
 		}
 	}' | column -t 
 }
+
+# Programs
+alias c='clear'
+alias cls='clear'
+alias df=dfs  #'df -h | grep -v '/dev/loop' | grep -v '/var/lib''
+alias vi='vim'
 
 # Git aliases
 alias init='git init'

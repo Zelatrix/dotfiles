@@ -35,6 +35,8 @@ call plug#begin('~/.vim/plugged')
 	" Plugins for syntax highlighting
   Plug 'https://github.com/bfrg/vim-cpp-modern' " C/C++
   Plug 'https://github.com/msuperdock/vim-agda'
+	
+	Plug 'powerline/powerline'
 
   " This requires a Nerd Font to be installed otherwise the icons will not show up
   Plug 'https://github.com/ryanoasis/vim-devicons' " Developer icons

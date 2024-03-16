@@ -15,10 +15,15 @@
 #
 #
 
+# LibQtile imports 
 from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.config import KeyChord
+from libqtile.widget import PulseVolume 
+
+# Standard libraries
+import pulsectl_asyncio 
 
 mod = "mod4" # Set the modifier key to the Windows key
 terminal = "xterm"
@@ -76,15 +81,18 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # Custom keybinds
-    #Key([mod], "m", 
-    #    lazy.window.toggle_maximize(), 
-    #    desc="Maximise the currently focused window"
-    #),
-    
     KeyChord([mod], "j", [
         Key([], "f",
             lazy.spawn("com.github.iwalton3.jellyfin-media-player"), 
             desc="Launch Jellyfin Media Player"
+        ),
+        Key([], "m", 
+            lazy.window.toggle_minimize(), 
+            desc="Minimise the currently focused window"
+        ),
+        Key([], "n",
+            lazy.window.toggle_maximize(),
+            desc="Maximise the current window"
         )
         #Key([], "d", 
         #    lazy.layout.down(), 
@@ -156,21 +164,20 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
                 widget.Prompt(),
-                # widget.WindowName(),
                 widget.Chord(
                     chords_colors={"launch": ("#ff0000", "#ffffff"),},
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.WindowTabs(),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Wlan(interface="wlan0"), # Show status of `wlan0` interface
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Wlan(device="wlan0"),
+                widget.TextBox("| Battery Level:"),
                 widget.Battery(battery="BAT0"), # Display battery information for BAT0
-                widget.QuickExit() 
+                widget.TextBox("| Volume:"),
+                widget.PulseVolume(device="card0"),
+                # widget.QuickExit() 
                 ], 
             24
         )

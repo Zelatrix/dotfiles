@@ -22,5 +22,7 @@ style="bold yellow"
 always_show_remote=true
 format="[$branch $symbol]($style)"
 
+[git_commit]
+
 [python]
 format="[$virtualenv]($style)"
