@@ -2,4 +2,4 @@ xterm*background: black
 xterm*foreground: white
 xterm*faceName: AnonymiceProNerdFontMono-Regular 
 xterm*faceSize: 16
-
+xterm*selectToClipboard: true
